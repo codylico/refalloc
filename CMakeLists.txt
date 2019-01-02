@@ -5,8 +5,15 @@ project(refalloc C)
 
 option(CMAKE_DISABLE_TESTING "Disable testing.")
 option(REFALLOC_TEST_C11 "Test with C 2011")
+option(BUILD_SHARED_LIBS "Build a shared (not static) library")
 
 add_library(refalloc "refalloc.c" "refalloc.h")
+
+if (BUILD_SHARED_LIBS)
+  if (WIN32)
+    target_compile_definitions(refalloc PUBLIC "REFALLOC_WIN32_DLL")
+  endif (WIN32)
+endif (BUILD_SHARED_LIBS)
 
 if (NOT CMAKE_DISABLE_TESTING)
   # simple (single-thread) test

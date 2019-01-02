@@ -1,4 +1,6 @@
 
+#define REFALLOC_WIN32_DLL_INTERNAL
+
 #include "refalloc.h"
 #include <limits.h>
 #include <stdlib.h>
